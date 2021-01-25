@@ -1,0 +1,72 @@
+[
+  {
+    "nombre": "Carlos",
+    "hobby": "Guitarra",
+    "edad": 22,
+    "telefono": 8341902015,
+    "direccion": "17 Morelos"
+  },
+  {
+    "nombre": "Alain",
+    "hobby": "Series",
+    "edad": 21,
+    "telefono": 8341207315,
+    "direccion": "3 Abasolo"
+  },
+  {
+    "nombre": "Jaqueline",
+    "hobby": "Economía",
+    "edad": 24,
+    "telefono": 810239091,
+    "direccion": "5 Guerrero"
+  },
+  {
+    "nombre": "Enrique",
+    "hobby": "TV",
+    "edad": 20,
+    "telefono": 8291092021,
+    "direccion": "4 Matamoros"
+  },
+  {
+    "nombre": "Paco",
+    "hobby": "Videojuegos",
+    "edad": 22,
+    "telefono": 810293770,
+    "direccion": "7 Sonora"
+  },
+  {
+    "nombre": "Norma",
+    "hobby": "Comida",
+    "edad": 25,
+    "telefono": 810572918,
+    "direccion": "9 Abasolo"
+  },
+  {
+    "nombre": "Gabriela",
+    "hobby": "Instagram",
+    "edad": 22,
+    "telefono": 819833921,
+    "direccion": "15 Villas"
+  },
+  {
+    "nombre": "David",
+    "hobby": "Futbol",
+    "edad": 23,
+    "telefono": 810392031,
+    "direccion": "16 Sierra Grande"
+  },
+  {
+    "nombre": "Frida",
+    "hobby": "Basquetbol",
+    "edad": 21,
+    "telefono": 8341028920,
+    "direccion": "18 Olivia Ramirez"
+  },
+  {
+    "nombre": "Alberto",
+    "hobby": "Call of Duty",
+    "edad": 23,
+    "telefono": 8345801297,
+    "direccion": "20 Hidalgo"
+  }
+]

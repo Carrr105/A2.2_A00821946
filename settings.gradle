@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "Act2.2_A00821946"
