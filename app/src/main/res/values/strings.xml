@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Act2.2_A00821946</string>
     <string name="boton">CARGAR</string>
+    <string name="button7">MUESTRA MÁS</string>
+    <string name="textview4">Nombre</string>
+    <string name="textview5">Hobby</string>
 </resources>
