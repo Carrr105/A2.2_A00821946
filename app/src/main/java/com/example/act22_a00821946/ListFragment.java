@@ -3,6 +3,7 @@ package com.example.act22_a00821946;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,9 +29,13 @@ import java.util.List;
 public class ListFragment extends Fragment implements View.OnClickListener, Handler.Callback  {
 
     private RecyclerView recyclerView;
-    private ArrayList<String> datos;
+    private ArrayList<String> direccion;
     private ArrayList<String> nombres;
     private ArrayList<String> hobby;
+    private ArrayList<Integer> telefono;
+    private ArrayList<Integer> edad;
+
+
     private Handler handler;
 
 
@@ -50,7 +55,10 @@ public class ListFragment extends Fragment implements View.OnClickListener, Hand
         super.onCreate(savedInstanceState);
         nombres = new ArrayList<>();
         hobby = new ArrayList<>();
-        datos = new ArrayList<>();
+        direccion = new ArrayList<>();
+        telefono = new ArrayList<>();
+        edad = new ArrayList<>();
+
         // handler
         handler = new Handler(Looper.getMainLooper(), this);
 
@@ -66,7 +74,7 @@ public class ListFragment extends Fragment implements View.OnClickListener, Hand
 
         // obtener referencia al widget de recycler view (GUI)
         recyclerView = v.findViewById(R.id.recycler);
-
+        creaLista();
         return v;
     }
 
@@ -74,6 +82,12 @@ public class ListFragment extends Fragment implements View.OnClickListener, Hand
     public void onClick(View view) {
         int pos = recyclerView.getChildLayoutPosition(view);
         Toast.makeText(getContext(), nombres.get(pos), Toast.LENGTH_SHORT).show();
+        Fragment nextF = new DetailsFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.contenedor, nextF ); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+
     }
 
     @Override
@@ -87,27 +101,35 @@ public class ListFragment extends Fragment implements View.OnClickListener, Hand
                 JSONObject temp = datos.getJSONObject(i);
                 nombres.add(temp.getString("nombre"));
                 hobby.add(temp.getString("hobby"));
+                direccion.add(temp.getString("hobby"));
+                telefono.add(temp.getInt("telefono"));
+                edad.add(temp.getInt("edad"));
+
 
                 Log.wtf("JSON", "--------------------------------------");
                 Log.wtf("JSON", temp.getString("nombre"));
                 Log.wtf("JSON", temp.getInt("edad") + "");
             }
+            creaLista();
 
-            ListAdapter adapter = new ListAdapter(nombres, hobby, this);
-
-            // layout manager
-            // define cómo se van a organizar los elementos en el recycler view
-            LinearLayoutManager llm = new LinearLayoutManager(getContext());
-            llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-            GridLayoutManager glm = new GridLayoutManager(getContext(), 1);
-
-            recyclerView.setLayoutManager(llm);
-            recyclerView.setAdapter(adapter);
         }catch (JSONException e) {
             e.printStackTrace();
         }
 
         return true;
+    }
+
+    public void creaLista(){
+        ListAdapter adapter = new ListAdapter(nombres, hobby, this);
+
+        // layout manager
+        // define cómo se van a organizar los elementos en el recycler view
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+
+        GridLayoutManager glm = new GridLayoutManager(getContext(), 1);
+
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setAdapter(adapter);
     }
 }
