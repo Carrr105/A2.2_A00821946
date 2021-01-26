@@ -73,7 +73,7 @@ public class ListFragment extends Fragment implements View.OnClickListener, Hand
     @Override
     public void onClick(View view) {
         int pos = recyclerView.getChildLayoutPosition(view);
-        //        Toast.makeText(getContext(), datos.get(pos), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), nombres.get(pos), Toast.LENGTH_SHORT).show();
     }
 
     @Override

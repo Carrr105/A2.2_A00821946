@@ -16,12 +16,14 @@ public class MainActivity extends AppCompatActivity {
 
     ListFragment fragment;
     private static final String TAG_FRAGMENTO = "fragmento";
+    private boolean cargado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fragment = fragment.newInstance();
+        cargado = false;
     }
 
     public void cambiarFragmento (Fragment nuevo){
@@ -30,16 +32,20 @@ public class MainActivity extends AppCompatActivity {
         Fragment f = manager.findFragmentByTag(TAG_FRAGMENTO);
         FragmentTransaction transaction = manager.beginTransaction();
 
-        // si el fragmento que queremos agregar es el que ya está
-        if(nuevo == f) {
-            return;
+        if (!cargado) {
+            // si el fragmento que queremos agregar es el que ya está
+            if (nuevo == f) {
+                return;
+            }
+
+            if (f != null) {
+                transaction.remove(f);
+            }
+            transaction.add(R.id.contenedor, nuevo, TAG_FRAGMENTO);
+            transaction.commit();
+            cargado = true;
         }
 
-        if(f != null){
-            transaction.remove(f);
-        }
-        transaction.add(R.id.contenedor, nuevo, TAG_FRAGMENTO);
-        transaction.commit();
     }
 
     public void fragmentoL(View v){
