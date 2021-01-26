@@ -4,4 +4,9 @@
     <string name="button7">MUESTRA MÁS</string>
     <string name="textview4">Nombre</string>
     <string name="textview5">Hobby</string>
+    <string name="textview">Nombre</string>
+    <string name="textview2">Edad</string>
+    <string name="textview6">Hobby</string>
+    <string name="textview8">Teléfono</string>
+    <string name="textview9">Dirección</string>
 </resources>
