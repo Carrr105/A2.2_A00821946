@@ -81,8 +81,14 @@ public class ListFragment extends Fragment implements View.OnClickListener, Hand
     @Override
     public void onClick(View view) {
         int pos = recyclerView.getChildLayoutPosition(view);
-        Toast.makeText(getContext(), nombres.get(pos), Toast.LENGTH_SHORT).show();
         Fragment nextF = new DetailsFragment();
+        Bundle args = new Bundle();
+        args.putString("nombre", nombres.get(pos));
+        args.putString("direccion", direccion.get(pos));
+        args.putString("hobby", hobby.get(pos));
+        args.putInt("edad", edad.get(pos));
+        args.putInt("telefono", telefono.get(pos));
+        nextF.setArguments(args);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.contenedor, nextF ); // give your fragment container id in first parameter
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
